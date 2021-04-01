@@ -1,0 +1,42 @@
+plugins {
+    id 'java'
+}
+
+version '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+
+task createJar(type: Jar) {
+    manifest {
+        attributes 'Main-Class': 'Main'
+    }
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    finalizedBy {
+        moveJar
+    }
+}
+
+task moveJar() {
+    doLast {
+        ant.move file: "build/libs/prac_9-1.0.jar",
+                todir: "."
+    }
+    finalizedBy {
+        BuildDocker
+    }
+}
+
+task BuildDocker(type: Exec) {
+    workingDir projectDir
+    commandLine "docker", "build", "-t", "prac-9", "."
+    finalizedBy {
+        RunDocker
+    }
+}
+
+task RunDocker(type: Exec) {
+    commandLine "docker", "run", "-it", "-d", "--name", "serg", "prac-9"
+}
