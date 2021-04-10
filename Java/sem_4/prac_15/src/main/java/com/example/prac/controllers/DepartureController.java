@@ -29,8 +29,8 @@ public class DepartureController {
     public List<Departure> get(){
         return departureService.getDepartures();
     }
-    @GetMapping("/del/{departureDate}")
-    public String remove(@PathVariable String departureDate){
-        return departureService.deleteDeparture(departureDate);
+    @GetMapping("/del/{id}")
+    public String remove(@PathVariable int id){
+        return departureService.deleteDeparture(id);
     }
 }

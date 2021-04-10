@@ -13,13 +13,9 @@ import javax.persistence.Entity;
 @Setter
 public class PostOffice {
     @Id
-    @SequenceGenerator(name = "postoffice_seq", sequenceName =
-            "postoffice_sequence", allocationSize = 1)
-    @GeneratedValue(generator = "postoffice_seq", strategy =
-            GenerationType.SEQUENCE)
     private int id;
     @Column(name = "name")
     String name;
-    @Column(name = "cityName")
+    @Column(name = "cityname")
     String cityName;
 }

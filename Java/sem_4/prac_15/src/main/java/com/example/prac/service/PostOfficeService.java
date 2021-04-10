@@ -31,9 +31,9 @@ public class PostOfficeService {
         transaction.commit();
     }
 
-    public String deletePostOffice(String name){
+    public String deletePostOffice(int id){
         Transaction transaction = session.beginTransaction();
-        PostOffice postOffice = session.find(PostOffice.class, name);
+        PostOffice postOffice = session.find(PostOffice.class, id);
         if( postOffice == null){
             return "User is not found";
         }

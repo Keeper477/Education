@@ -26,8 +26,8 @@ public class PostOfficeController {
     public List<PostOffice> get(){
         return postOfficeService.getPostOffices();
     }
-    @GetMapping("/del/{name}")
-    public String remove(@PathVariable String name){
-        return postOfficeService.deletePostOffice(name);
+    @GetMapping("/del/{id}")
+    public String remove(@PathVariable int id){
+        return postOfficeService.deletePostOffice(id);
     }
 }

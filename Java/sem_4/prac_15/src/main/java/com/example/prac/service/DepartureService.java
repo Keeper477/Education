@@ -32,9 +32,9 @@ public class DepartureService {
         transaction.commit();
     }
 
-    public String deleteDeparture(String departureDate){
+    public String deleteDeparture(int id){
         Transaction transaction = session.beginTransaction();
-        Departure departure = session.find(Departure.class, departureDate);
+        Departure departure = session.find(Departure.class, id);
         if( departure == null){
             return "User is not found";
         }
