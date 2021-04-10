@@ -1,4 +1,4 @@
-package com.example.prac.model;
+package prac15.model;
 
 import lombok.Getter;
 import lombok.Setter;

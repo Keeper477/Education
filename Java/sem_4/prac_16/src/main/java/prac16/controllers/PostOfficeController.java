@@ -1,9 +1,9 @@
-package com.example.prac.controllers;
+package prac16.controllers;
 
-import com.example.prac.model.PostOffice;
+import prac16.model.PostOffice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import com.example.prac.service.PostOfficeService;
+import prac16.service.PostOfficeService;
 
 import java.util.List;
 

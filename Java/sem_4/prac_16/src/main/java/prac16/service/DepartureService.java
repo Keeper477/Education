@@ -1,11 +1,12 @@
-package com.example.prac.service;
+package prac16.service;
 
-import com.example.prac.model.Departure;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Component;
+import prac16.model.Departure;
+import prac16.model.PostOffice;
 
 import javax.annotation.PostConstruct;
 import java.util.List;
@@ -36,10 +37,14 @@ public class DepartureService {
         Transaction transaction = session.beginTransaction();
         Departure departure = session.find(Departure.class, id);
         if( departure == null){
-            return "User is not found";
+            return "Departure is not found";
         }
         session.delete(departure);
         transaction.commit();
-        return "User deleted";
+        return "Departure deleted";
+    }
+    public PostOffice getPostOfficeByDeparture(int postOfficeId) {
+        return session.createQuery("FROM Departure where id = :id", Departure.class)
+                .setParameter("id", postOfficeId).getSingleResult().getPostoffice();
     }
 }

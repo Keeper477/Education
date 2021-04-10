@@ -1,7 +1,7 @@
-package com.example.prac.controllers;
+package prac15.controllers;
 
-import com.example.prac.model.Departure;
-import com.example.prac.service.DepartureService;
+import prac15.model.Departure;
+import prac15.service.DepartureService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;

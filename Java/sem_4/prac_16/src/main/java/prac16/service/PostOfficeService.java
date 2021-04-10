@@ -1,6 +1,6 @@
-package com.example.prac.service;
+package prac16.service;
 
-import com.example.prac.model.PostOffice;
+import prac16.model.PostOffice;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -35,10 +35,10 @@ public class PostOfficeService {
         Transaction transaction = session.beginTransaction();
         PostOffice postOffice = session.find(PostOffice.class, id);
         if( postOffice == null){
-            return "User is not found";
+            return "PostOffice is not found";
         }
         session.delete(postOffice);
         transaction.commit();
-        return "User deleted";
+        return "PostOffice deleted";
     }
 }

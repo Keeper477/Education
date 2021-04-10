@@ -1,4 +1,4 @@
-package com.example.prac;
+package prac15;
 
 import com.zaxxer.hikari.*;
 import org.springframework.context.annotation.Bean;
@@ -26,7 +26,7 @@ public class Config {
     public LocalSessionFactoryBean factoryBean(DataSource dataSource) {
         LocalSessionFactoryBean sessionFactoryBean = new LocalSessionFactoryBean();
         sessionFactoryBean.setDataSource(dataSource);
-        sessionFactoryBean.setPackagesToScan("com.example.prac.model");
+        sessionFactoryBean.setPackagesToScan("prac15.model");
         Properties properties = new Properties();
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
         sessionFactoryBean.setHibernateProperties(properties);

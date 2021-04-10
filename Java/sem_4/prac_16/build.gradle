@@ -4,7 +4,7 @@ plugins {
     id 'java'
 }
 
-group 'prac15'
+group 'prac16'
 version '1.0-SNAPSHOT'
 
 repositories {
