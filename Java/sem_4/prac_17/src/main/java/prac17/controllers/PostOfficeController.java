@@ -1,9 +1,9 @@
-package prac16.controllers;
+package prac17.controllers;
 
-import prac16.model.PostOffice;
-import prac16.service.PostOfficeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import prac17.model.PostOffice;
+import prac17.service.PostOfficeService;
 
 import java.util.List;
 
@@ -29,5 +29,15 @@ public class PostOfficeController {
     @GetMapping("/del/{id}")
     public String remove(@PathVariable int id){
         return postOfficeService.deletePostOffice(id);
+    }
+    @GetMapping("/get/sorted/cityname")
+    @ResponseBody
+    public List<PostOffice> getSortedPostOfficesByCityName(){
+        return postOfficeService.getSortedPostOfficesByCityName();
+    }
+    @GetMapping("/get/sorted/name")
+    @ResponseBody
+    public List<PostOffice> getSortedPostOfficesByName(){
+        return postOfficeService.getSortedPostOfficesByName();
     }
 }
