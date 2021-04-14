@@ -1,13 +1,13 @@
-package prac21.service;
+package prac22.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import prac21.model.Departure;
-import prac21.model.PostOffice;
-import prac21.repositories.DepartureRepository;
+import prac22.model.Departure;
+import prac22.model.PostOffice;
+import prac22.repositories.DepartureRepository;
 
 import java.util.List;
 
