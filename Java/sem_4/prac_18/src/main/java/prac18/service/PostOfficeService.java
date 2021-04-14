@@ -20,9 +20,9 @@ public class PostOfficeService {
 
     public String deletePostOffice(int id){
         if( postOfficeRepository.existsById(id)){
-            return "Departure is not found";
+            return "PostOffice deleted";
         }
-        return "Departure deleted";
+        return "PostOffice is not found";
     }
 
     public List<PostOffice> getSortedPostOfficesByName(){ return postOfficeRepository.findAll(Sort.by("name")); }
