@@ -2,25 +2,22 @@ package prac23.model;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.Collection;
-import java.util.Set;
 
 @Entity
 @Table(name = "users")
 @Setter
 @Getter
-public class User implements UserDetails {
+public class User {
     @Id
     @Column(name = "user_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long user_id;
+    private Long id;
 
-    @Column(name = "username")
-    private String username;
+    @Column(name = "login")
+    private String login;
 
     @Column(name = "password")
     private String password;
@@ -28,36 +25,25 @@ public class User implements UserDetails {
     @Column(name = "session_id")
     private String sessionID;
 
-    @Transient
-    private String passwordConfirm;
 
     @ManyToMany(fetch=FetchType.EAGER)
-    @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"),
+    @JoinTable(name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Role> roles;
+    private Collection<Role> roles;
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return getRoles();
+
+    public User() {
     }
 
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
+    public User(String login, String password) {
+        this.login = login;
+        this.password = password;
     }
 
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return true;
+    public User(String password, Collection<Role> roles) {
+        this.login = login;
+        this.password = password;
+        this.roles = roles;
     }
 }

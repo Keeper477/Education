@@ -1,42 +1,47 @@
 package prac23.model;
 
-import lombok.Getter;
-import lombok.Setter;
-import org.springframework.security.core.GrantedAuthority;
-
-import javax.persistence.*;
-import java.util.Set;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
-@Table(name = "roles")
-@Getter
-@Setter
-public class Role implements GrantedAuthority {
-    @Id
-    @Column(name = "role_id")
-    private Long id;
+public class Role {
 
-    @Column(name = "name")
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     private String name;
 
-    @ManyToMany(mappedBy = "roles")
-    private Set<User> users;
+    public Role() {
+    }
 
     public Role(Long id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public Role(Long id) {
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public Role() {
+    public String getName() {
+        return name;
+    }
 
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
-    public String getAuthority() {
-        return getName();
+    public String toString() {
+        return "Role{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
     }
 }

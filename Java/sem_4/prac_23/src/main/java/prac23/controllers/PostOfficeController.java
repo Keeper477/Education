@@ -1,7 +1,6 @@
 package prac23.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import prac23.model.PostOffice;
 import prac23.service.PostOfficeService;
@@ -9,7 +8,7 @@ import prac23.service.PostOfficeService;
 import java.util.List;
 
 @RequestMapping("/home/postoffice")
-@Controller
+@RestController
 public class PostOfficeController {
 
     @Autowired

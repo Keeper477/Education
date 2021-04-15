@@ -18,7 +18,7 @@ import java.io.IOException;
 @Service
 @Slf4j
 @ManagedResource(
-        objectName = "Practice23:category=MBeans,name=DataScheduler"
+        objectName = "Practice22:category=MBeans,name=DataScheduler"
 )
 public class SchedulerService {
 
@@ -32,7 +32,7 @@ public class SchedulerService {
     @ManagedOperation(description = "Overwrite files in out")
     public void doScheduledTask() throws IOException {
         System.out.println("Scheduled task");
-        File file_dir = ResourceUtils.getFile("Java/sem_4/prac_23/src/main/resources/out");
+        File file_dir = ResourceUtils.getFile("Java/sem_4/prac_22/src/main/resources/out");
         try {
             for (File file : file_dir.listFiles())
                 if (file.isFile()) file.delete();
