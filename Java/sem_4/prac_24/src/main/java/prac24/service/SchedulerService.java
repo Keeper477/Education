@@ -1,4 +1,4 @@
-package prac23.service;
+package prac24.service;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,13 +7,14 @@ import org.springframework.jmx.export.annotation.ManagedResource;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
-import prac23.model.Departure;
-import prac23.model.PostOffice;
+import prac24.model.Departure;
+import prac24.model.PostOffice;
 
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Objects;
 
 @Service
 @Slf4j
@@ -31,10 +32,9 @@ public class SchedulerService {
     @Scheduled(cron = "0 0/30 * * * *")
     @ManagedOperation(description = "Overwrite files in out")
     public void doScheduledTask() throws IOException {
-        System.out.println("Scheduled task");
-        File file_dir = ResourceUtils.getFile("Java/sem_4/prac_23/src/main/resources/out");
+        File file_dir = ResourceUtils.getFile("Java/sem_4/prac_24/src/main/resources/out");
         try {
-            for (File file : file_dir.listFiles())
+            for (File file : Objects.requireNonNull(file_dir.listFiles()))
                 if (file.isFile()) file.delete();
         } catch (NullPointerException e) {
             e.printStackTrace();
