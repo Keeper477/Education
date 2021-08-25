@@ -483,7 +483,8 @@ gradle-app.setting
 *.suo
 *.user
 *.userosscache
-*.sln.docstates
+*.sln
+*.vcxproj
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
